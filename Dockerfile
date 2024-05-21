@@ -1,5 +1,8 @@
 # Vulnerable Dockerfile Example
-FROM httpd:2.4.29
+FROM ubuntu:14.04
 
-# Copy some website content (example)
-COPY . /usr/local/apache2/htdocs/
+# Install an outdated and vulnerable package
+RUN apt-get update && apt-get install -y openssl=1.0.1f-1ubuntu2
+
+# Sample application setup
+RUN echo 'Hello, world!' > /var/www/html/index.html
